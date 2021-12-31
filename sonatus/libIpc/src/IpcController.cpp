@@ -22,7 +22,7 @@ bool IpcController::create() {
 }
 
 bool IpcController::write(char* data, int size) {
-    cout<<"IpcController::write()"<<endl;
+    cout<<"IpcController::write() "<< data << endl;
     if(size > MEM_SIZE) {
         cout<<"Shared memory size over"<<endl;
         return false;
@@ -33,8 +33,9 @@ bool IpcController::write(char* data, int size) {
 }
 
 bool IpcController::read(char* data, int size) {
-    printf( "Data read from shared mem :   %s\n", (char *)shmAddr);
+   // printf( "Data read from shared mem :   %s\n", (char *)shmAddr);
     memcpy(data, (char *)shmAddr, size);
+    printf( "Data read from shared data :   %s\n", (char *)data);
     return true;
 }
 

@@ -11,8 +11,8 @@ using namespace std;
 class IpcMessage {
 
 public:
-    bool serializeIpcRequest(string str, char* output, int size);
-    bool deSerializeIpcRequest(char* input, int size, IpcRequest* request);
+    bool serializeIpcRequest(string str, char* output);
+    bool deSerializeIpcRequest(char* input, IpcRequest* request);
 
 private:
     int requestId();

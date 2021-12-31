@@ -22,14 +22,13 @@ int main() {
         char buff [BUFFER_SIZE] = {0,};
  
 
-        ipc.read(buff, BUFFER_SIZE);
+        ipc.read(buff, sizeof(IpcRequest));
         if (buff[0] != 0) {
             IpcMessage message;
             IpcRequest request;
-            message.deSerializeIpcRequest(buff, BUFFER_SIZE, &request);
-            cout << "Receive data " << request.op<< " " << request.lparam <<  " " << request.rparam<<endl;
+            message.deSerializeIpcRequest(buff, &request);
+            cout << "Receive data " << request.requestId << " " << request.op<< " " << request.lparam <<  " " << request.rparam<<endl;
         }
-
 
         this_thread::sleep_for(chrono::milliseconds(2000));
        // if(buffer[0] == 1) {

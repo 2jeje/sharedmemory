@@ -38,7 +38,7 @@ int main() {
 
         getline(cin, command);
         IpcMessage message;
-        if (message.serializeIpcRequest(command, buff, BUFFER_SIZE) == false) {
+        if (message.serializeIpcRequest(command, buff) == false) {
             cout<<"commnad is invalid"<<endl;
         }
 
