@@ -2,7 +2,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-
+#include <cstring>
 #include "IpcController.h"
 #include "IpcMessage.h"
 
@@ -22,11 +22,10 @@ int main() {
         char buff [MEM_SIZE] = {0,};
         int processingRequestId = -1;
 
-        // ipc.lock();
-        // ipc.wait();
-        // ipc.unlock();
+	ipc.wait();
 
         ipc.read(buff, sizeof(IpcRequest));
+ 
         if (buff[0] != 0) {
 
             IpcMessage message;
@@ -57,15 +56,10 @@ int main() {
                 cout << "Send response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
 
                 memset(buff, 0, MEM_SIZE);
-                // ipc.write(buff, 2000);
                 
                 message.serializeIpcResponse(response, buff);
                 ipc.write(buff, sizeof(IpcResponse));
                 ipc.signal();
-                // IpcResponse responserr;
-                // message.deSerializeIpcResponse(buff, &responserr);
-                // cout << "Test Send response :" << responserr.status << " " << responserr.requestId<< " " << responserr.result <<endl;
-
             }
         }
 

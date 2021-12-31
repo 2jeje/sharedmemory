@@ -1,8 +1,10 @@
 project(SONATUS)
-
+cmake_minimum_required(VERSION 3.5)
 #
 # libIPC
 #
+
+set (CMAKE_CXX_FLAGS "-std=c++11 -pthread -lrt")
 
 set(LIBIPC_SOURCES
     "./libIpc/src/IpcController.cpp"

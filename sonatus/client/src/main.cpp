@@ -2,6 +2,8 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
+#include <cstring>
+
 #include "IpcController.h"
 #include "IpcMessage.h"
 
@@ -42,7 +44,9 @@ int main() {
         }
         else {
             ipc.write(buff, sizeof(IpcRequest));
-            
+	    ipc.signal();
+            this_thread::sleep_for(chrono::milliseconds(1000));
+
             ipc.wait();
 
             memset(buff, 0, MEM_SIZE);
@@ -55,9 +59,9 @@ int main() {
                    // break;
                 }
             }
-            ipc.unlock();
 
         }
     }
+    ipc.free(); 
     return 0;
 }

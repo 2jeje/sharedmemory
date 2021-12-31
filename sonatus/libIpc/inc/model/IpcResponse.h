@@ -4,7 +4,7 @@
 struct IpcResponse {
     int status;
     int requestId;
-    int result;
+    double result;
 };
 
 #endif

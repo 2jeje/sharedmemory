@@ -1,5 +1,0 @@
-/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles/Ipc.dir
-/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles/Server.dir
-/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles/Client.dir
-/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles/edit_cache.dir
-/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles/rebuild_cache.dir
