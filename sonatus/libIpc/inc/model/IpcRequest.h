@@ -1,5 +1,5 @@
-#ifndef IpcREQUEST_H
-#define IpcREQUEST_H
+#ifndef IPC_REQUEST_H
+#define IPC_REQUEST_H
 
 struct IpcRequest {
     int requestId;

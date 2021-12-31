@@ -1,10 +1,10 @@
-#ifndef RESPONSE_H
-#define RESPONSE_H
+#ifndef IPC_RESPONSE_H
+#define IPC_RESPONSE_H
 
-struct Response {
+struct IpcResponse {
     int status;
     int requestId;
-    int result;
+    double result;
 };
 
 #endif

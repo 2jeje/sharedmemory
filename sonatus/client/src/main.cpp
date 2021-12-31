@@ -42,7 +42,7 @@ int main() {
             cout<<"commnad is invalid"<<endl;
         }
 
-        ipc.write(buff, MEM_SIZE);
+        ipc.write(buff, sizeof(IpcRequest));
        // this_thread::sleep_for(chrono::milliseconds(2000));
 
     }

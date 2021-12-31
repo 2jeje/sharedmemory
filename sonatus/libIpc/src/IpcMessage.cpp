@@ -11,9 +11,6 @@ bool IpcMessage::serializeIpcRequest(string str, char* output) {
 
     smatch match;
     if (regex_match(str, match, reg) == false) {
-    //   for (size_t i = 0; i < match.size(); i++) {
-    //     cout << "Match : " << match[i].str() << " " <<match.size()<< endl;
-    //   }
         return false;
     }
 
@@ -22,10 +19,7 @@ bool IpcMessage::serializeIpcRequest(string str, char* output) {
     }
 
     IpcRequest request = {requestId(), match[2].str()[0], stoi(match[1].str()), stoi(match[3].str())};
-    cout << "send data " << request.requestId << " " << request.op<< " " << request.lparam <<  " " << request.rparam<<endl;
-    memcpy(output, &request, sizeof(request));
-
-
+    memcpy(output, &request, sizeof(IpcRequest));
 
     return true;
 }
@@ -35,6 +29,19 @@ bool IpcMessage::deSerializeIpcRequest(char* input, IpcRequest* request) {
     memcpy(request, temp, sizeof(IpcRequest));
     return true;
 }
+
+
+bool IpcMessage::serializeIpcResponse(IpcResponse* response, char* output) {
+    memcpy(output, &response, sizeof(IpcResponse));
+    return true;
+}
+
+bool IpcMessage::deSerializeIpcResponse(char* input, IpcResponse* response) {
+    IpcResponse* temp = reinterpret_cast<IpcResponse*>(input);
+    memcpy(response, temp, sizeof(IpcResponse));
+    return true;
+}
+
 
 int IpcMessage::requestId() {
     srand((unsigned int)time(NULL));
