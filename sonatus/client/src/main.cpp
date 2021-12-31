@@ -41,10 +41,26 @@ int main() {
         if (message.serializeIpcRequest(command, buff) == false) {
             cout<<"commnad is invalid"<<endl;
         }
+        else {
+            ipc.write(buff, sizeof(IpcRequest));
+            this_thread::sleep_for(chrono::milliseconds(1000));
+            
+            memset(buff, 0, BUFFER_SIZE);
+            while(1) {
+                ipc.read(buff,sizeof(IpcResponse));
+                if (buff[0] != 0) {
+                    IpcResponse response;
+                    if (message.deSerializeIpcResponse(buff, &response) == true) {
+                        cout << "Receive response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
+                        break;
+                    }
 
-        ipc.write(buff, sizeof(IpcRequest));
-       // this_thread::sleep_for(chrono::milliseconds(2000));
+                     memset(buff, 0, BUFFER_SIZE);
+                     ipc.write(buff, BUFFER_SIZE);
+                }
+            }
 
+        }
     }
     return 0;
 }

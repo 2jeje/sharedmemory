@@ -15,7 +15,7 @@ public:
     bool deSerializeIpcRequest(char* input, IpcRequest* request);
 
     bool serializeIpcResponse(IpcResponse* response, char* output);
-    bool deSerializeIpcRequest(char* input, IpcResponse* response);
+    bool deSerializeIpcResponse(char* input, IpcResponse* response);
 
 private:
     int requestId();
