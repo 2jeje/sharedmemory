@@ -19,17 +19,18 @@ public:
 
         this->key = key;
         this->shmid = 0;
+        this->shmAddr = NULL;
         cout<<"key : " << this->key <<endl;
     }
 
     bool create();
-//    bool createProxy();
     bool write(char* data, int size);
     bool read(char* data);
     bool free();
 private:
     int key;
     int shmid;
+    void* shmAddr;
 };
 
 #endif

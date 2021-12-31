@@ -1,5 +1,7 @@
 
 #include <iostream>
+#include <thread>
+#include <chrono>
 #include "IpcController.h"
 
 using namespace std;
@@ -26,15 +28,10 @@ int main() {
         return 0;
     }
 
-    ipc.write(buffer, MEM_SIZE);
-    // while(1) {
-    //     ipc.read(buffer);
-        
-    //     if(buffer[0] == 1) {
-    //         cout << "Receive data from shared memory!" << endl;
-    //         break;
-    //     }
-    // }
-    ipc.free();
+    while(1) {
+        ipc.write(buffer, MEM_SIZE);
+        this_thread::sleep_for(chrono::milliseconds(2000));
+
+    }
     return 0;
 }
