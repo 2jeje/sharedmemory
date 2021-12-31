@@ -6,7 +6,6 @@
 #include "model/IpcResponse.h"
 
 using namespace std;
-#define BUFFER_SIZE 100
 
 class IpcMessage {
 

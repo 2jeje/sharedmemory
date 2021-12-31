@@ -10,7 +10,6 @@ using namespace std;
 int main() {
 
     cout<<"Client!!"<<endl;
-  //  char buffer[MEM_SIZE] = {0,};
     string key;
     int nKey = -1;
 
@@ -34,7 +33,7 @@ int main() {
     while(1) {
         cout<< "Please enter command(ex: 1+2 )> ";
         string command;
-        char buff [BUFFER_SIZE];
+        char buff [MEM_SIZE];
 
         getline(cin, command);
         IpcMessage message;
@@ -43,20 +42,15 @@ int main() {
         }
         else {
             ipc.write(buff, sizeof(IpcRequest));
-            this_thread::sleep_for(chrono::milliseconds(1000));
-            
-            memset(buff, 0, BUFFER_SIZE);
-            while(1) {
-                ipc.read(buff,sizeof(IpcResponse));
-                if (buff[0] != 0) {
-                    IpcResponse response;
-                    if (message.deSerializeIpcResponse(buff, &response) == true) {
-                        cout << "Receive response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
-                        break;
-                    }
+            this_thread::sleep_for(chrono::milliseconds(500));
 
-                     memset(buff, 0, BUFFER_SIZE);
-                     ipc.write(buff, BUFFER_SIZE);
+            memset(buff, 0, MEM_SIZE);
+            ipc.read(buff, sizeof(IpcResponse));
+            if (buff[0] != 0) {
+                IpcResponse response;
+                if (message.deSerializeIpcResponse(buff, &response) == true) {
+                    cout << "Receive response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
+                   // break;
                 }
             }
 

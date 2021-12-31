@@ -8,6 +8,13 @@
 #define  MEM_SIZE  4096
 using namespace std;
 
+struct IpcLock
+{
+    pthread_mutex_t mutex;
+    pthread_mutexattr_t mutexAttr;
+    char buffer[MEM_SIZE];
+};
+
 class IpcController {
 
 public:
@@ -19,7 +26,7 @@ public:
 
         this->key = key;
         this->shmid = 0;
-        this->shmAddr = NULL;
+        this->lockptr = NULL;
         cout<<"key : " << this->key <<endl;
     }
 
@@ -30,7 +37,8 @@ public:
 private:
     int key;
     int shmid;
-    void* shmAddr;
+    //void* shmAddr;
+    IpcLock* lockptr;
 };
 
 #endif

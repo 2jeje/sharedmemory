@@ -19,7 +19,7 @@ int main() {
     }
 
     while(1) {
-        char buff [BUFFER_SIZE] = {0,};
+        char buff [MEM_SIZE] = {0,};
         int processingRequestId = -1;
 
         ipc.read(buff, sizeof(IpcRequest));
@@ -50,11 +50,13 @@ int main() {
                 }
 
                 IpcResponse response = {status, request.requestId, result};
-                cout << "send response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
+                cout << "Send response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
 
-                memset(buff, 0, BUFFER_SIZE);
+                memset(buff, 0, MEM_SIZE);
+                // ipc.write(buff, 2000);
+
                 message.serializeIpcResponse(&response, buff);
-                ipc.write(buff, sizeof(IpcResponse));
+                ipc.write(buff, MEM_SIZE);
             }
         }
 

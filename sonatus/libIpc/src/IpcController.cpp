@@ -1,39 +1,65 @@
 #include <sys/types.h>
 #include <sys/shm.h>
+#include <pthread.h>
+#include <semaphore.h>
 
 #include "IpcController.h"
 
 bool IpcController::create() {
     cout<<"IpcController::create()"<<endl;
     shmid = shmget((key_t)key, MEM_SIZE, IPC_CREAT| 0666);
-        
-    if(shmid == -1) {
+
+    if (shmid == -1) {
         cout<<"create() shmget failed"<<endl;
         return false;
     }
 
-    if((shmAddr = shmat(shmid, (void *)0, 0)) == (void *) -1) {
+    if ((lockptr = (IpcLock *)shmat(shmid, NULL, 0)) == (IpcLock *) -1) {
         cout<<key<< " create()::shmat failed "<< std::strerror(errno) <<endl;
         return false;
     }
 
-   cout<<"create() shmget success"<<endl;
-   return true;
+   // memset(lockptr->buffer, 0, MEM_SIZE);
+
+    if (pthread_mutexattr_init( &lockptr->mutexAttr ) != 0 ) {
+        cout<<key<< " pthread_mutexattr_initfailed "<< std::strerror(errno) <<endl;
+        return false;
+    }
+
+    if( pthread_mutexattr_setpshared( &lockptr->mutexAttr,PTHREAD_PROCESS_SHARED) != 0 ) {
+        cout<<key<< " pthread_mutexattr_setpshared "<< std::strerror(errno) <<endl;
+        return false;
+    }
+
+    if( pthread_mutex_init( &lockptr->mutex, &lockptr->mutexAttr) != 0 ) {
+        cout<<key<< " pthread_mutex_init "<< std::strerror(errno) <<endl;
+        return false;
+    }
+
+    cout<<"create() shmget success"<<endl;
+    return true;
 }
 
 bool IpcController::write(char* data, int size) {
     cout<<"IpcController::write() "<< data << endl;
-    if(size > MEM_SIZE) {
+    if (size > MEM_SIZE) {
         cout<<"Shared memory size over"<<endl;
         return false;
     }
-    
-    memcpy((char *)shmAddr, data, size);
+
+    if (pthread_mutex_lock( &lockptr->mutex ) == 0 ) {
+        memcpy((char *)lockptr->buffer, data, size);
+    }
+
+    pthread_mutex_unlock( &lockptr->mutex ) ;
     return true;
 }
 
 bool IpcController::read(char* data, int size) {
-    memcpy(data, (char *)shmAddr, size);
+    if (pthread_mutex_lock( &lockptr->mutex ) == 0 ) {
+        memcpy(data, (char *)lockptr->buffer, size);
+    }
+    pthread_mutex_unlock( &lockptr->mutex );
    // printf( "Data read from shared data :   %s\n", (char *)data);
     return true;
 }
