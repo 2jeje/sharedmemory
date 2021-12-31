@@ -186,6 +186,21 @@ libIpc/src/IpcController.s:
 .PHONY : libIpc/src/IpcController.s
 
 # target to build an object file
+libIpc/src/IpcMessage.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/libIpc/src/IpcMessage.o
+.PHONY : libIpc/src/IpcMessage.o
+
+# target to preprocess a source file
+libIpc/src/IpcMessage.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/libIpc/src/IpcMessage.i
+.PHONY : libIpc/src/IpcMessage.i
+
+# target to generate assembly for a file
+libIpc/src/IpcMessage.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/libIpc/src/IpcMessage.s
+.PHONY : libIpc/src/IpcMessage.s
+
+# target to build an object file
 server/src/main.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/server/src/main.o
 .PHONY : server/src/main.o
@@ -217,6 +232,9 @@ help:
 	@echo "... libIpc/src/IpcController.o"
 	@echo "... libIpc/src/IpcController.i"
 	@echo "... libIpc/src/IpcController.s"
+	@echo "... libIpc/src/IpcMessage.o"
+	@echo "... libIpc/src/IpcMessage.i"
+	@echo "... libIpc/src/IpcMessage.s"
 	@echo "... server/src/main.o"
 	@echo "... server/src/main.i"
 	@echo "... server/src/main.s"

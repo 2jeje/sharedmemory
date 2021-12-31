@@ -4,13 +4,13 @@
 #include <chrono>
 
 #include "IpcController.h"
+#include "IpcMessage.h"
 
 using namespace std;
 
 int main() {
 
     cout<<"Server!!"<<endl;
-    char buffer[MEM_SIZE] = {0,};
 
     IpcController ipc;
     if (ipc.create() == false) {
@@ -19,12 +19,23 @@ int main() {
     }
 
     while(1) {
-        ipc.read(buffer);
-        this_thread::sleep_for(chrono::milliseconds(2000));
-        if(buffer[0] == 1) {
-            cout << "Receive data from shared memory!" << endl;
-            break;
+        char buff [BUFFER_SIZE] = {0,};
+ 
+
+        ipc.read(buff, BUFFER_SIZE);
+        if (buff[0] != 0) {
+            IpcMessage message;
+            IpcRequest request;
+            message.deSerializeIpcRequest(buff, BUFFER_SIZE, &request);
+            cout << "Receive data " << request.op<< " " << request.lparam <<  " " << request.rparam<<endl;
         }
+
+
+        this_thread::sleep_for(chrono::milliseconds(2000));
+       // if(buffer[0] == 1) {
+       //     cout << "Receive data from shared memory!" << endl;
+       //     break;
+       // }
     }
 
     ipc.free(); 

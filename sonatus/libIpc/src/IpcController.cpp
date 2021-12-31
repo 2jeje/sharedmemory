@@ -28,12 +28,13 @@ bool IpcController::write(char* data, int size) {
         return false;
     }
     
-    sprintf((char*)shmAddr, "%s", "abc");
+    sprintf((char*)shmAddr, "%s", data);
     return true;
 }
 
-bool IpcController::read(char* data) {
+bool IpcController::read(char* data, int size) {
     printf( "Data read from shared mem :   %s\n", (char *)shmAddr);
+    memcpy(data, (char *)shmAddr, size);
     return true;
 }
 

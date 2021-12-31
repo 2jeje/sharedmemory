@@ -25,7 +25,7 @@ public:
 
     bool create();
     bool write(char* data, int size);
-    bool read(char* data);
+    bool read(char* data, int size);
     bool free();
 private:
     int key;

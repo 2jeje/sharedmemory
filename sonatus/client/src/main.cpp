@@ -3,34 +3,47 @@
 #include <thread>
 #include <chrono>
 #include "IpcController.h"
+#include "IpcMessage.h"
 
 using namespace std;
 
 int main() {
 
     cout<<"Client!!"<<endl;
-    char buffer[MEM_SIZE] = {0,};
-    int key = 0;
+  //  char buffer[MEM_SIZE] = {0,};
+    string key;
+    int nKey = -1;
 
-    cout<< "Please input key value of Server> ";
-    cin >> key;
+    cout<< "Please enter key value of Server> ";
+    getline(cin, key);
 
-    cout<< endl;
-
-    if (key == 0) {
-        cout << "Please input integer";
+    try{
+        nKey = stoi(key);
+    }
+    catch (int expn) {
+        cout << "input value is invalid";
         return 0;
     }
     
-    IpcController ipc(key);
+    IpcController ipc(nKey);
     if (ipc.create() == false) {
         cout << "ipc creation failed"<<endl;
         return 0;
     }
 
     while(1) {
-        ipc.write(buffer, MEM_SIZE);
-        this_thread::sleep_for(chrono::milliseconds(2000));
+        cout<< "Please enter command(ex: 1+2 )> ";
+        string command;
+        char buff [BUFFER_SIZE];
+
+        getline(cin, command);
+        IpcMessage message;
+        if (message.serializeIpcRequest(command, buff, BUFFER_SIZE) == false) {
+            cout<<"commnad is invalid"<<endl;
+        }
+
+        ipc.write(buff, MEM_SIZE);
+       // this_thread::sleep_for(chrono::milliseconds(2000));
 
     }
     return 0;

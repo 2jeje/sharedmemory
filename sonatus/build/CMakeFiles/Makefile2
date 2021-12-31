@@ -85,12 +85,12 @@ clean: CMakeFiles/Client.dir/clean
 CMakeFiles/Ipc.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles --progress-num=3,4 "Built target Ipc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles --progress-num=3,4,5 "Built target Ipc"
 .PHONY : CMakeFiles/Ipc.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Ipc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Ipc.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 0
 .PHONY : CMakeFiles/Ipc.dir/rule
@@ -111,12 +111,12 @@ CMakeFiles/Ipc.dir/clean:
 CMakeFiles/Server.dir/all: CMakeFiles/Ipc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles --progress-num=5,6 "Built target Server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles --progress-num=6,7 "Built target Server"
 .PHONY : CMakeFiles/Server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 0
 .PHONY : CMakeFiles/Server.dir/rule
@@ -142,7 +142,7 @@ CMakeFiles/Client.dir/all: CMakeFiles/Ipc.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Client.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 0
 .PHONY : CMakeFiles/Client.dir/rule

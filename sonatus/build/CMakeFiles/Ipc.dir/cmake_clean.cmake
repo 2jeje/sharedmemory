@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Ipc.dir/libIpc/src/IpcController.o"
   "CMakeFiles/Ipc.dir/libIpc/src/IpcController.o.d"
+  "CMakeFiles/Ipc.dir/libIpc/src/IpcMessage.o"
+  "CMakeFiles/Ipc.dir/libIpc/src/IpcMessage.o.d"
   "libIpc.dylib"
   "libIpc.pdb"
 )
