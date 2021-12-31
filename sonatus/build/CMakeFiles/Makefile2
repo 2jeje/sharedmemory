@@ -54,10 +54,10 @@ RM = /usr/local/Cellar/cmake/3.22.1/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/kakao/codingtest/sonatus
+CMAKE_SOURCE_DIR = /Users/kakao/codingtest/sharedmemory/sonatus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/kakao/codingtest/sonatus/build
+CMAKE_BINARY_DIR = /Users/kakao/codingtest/sharedmemory/sonatus/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /Users/kakao/codingtest/sonatus/build
 # The main recursive "all" target.
 all: CMakeFiles/Ipc.dir/all
 all: CMakeFiles/Server.dir/all
+all: CMakeFiles/Client.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -74,6 +75,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/Ipc.dir/clean
 clean: CMakeFiles/Server.dir/clean
+clean: CMakeFiles/Client.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -83,14 +85,14 @@ clean: CMakeFiles/Server.dir/clean
 CMakeFiles/Ipc.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sonatus/build/CMakeFiles --progress-num=1,2 "Built target Ipc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles --progress-num=3,4 "Built target Ipc"
 .PHONY : CMakeFiles/Ipc.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Ipc.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sonatus/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Ipc.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sonatus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 0
 .PHONY : CMakeFiles/Ipc.dir/rule
 
 # Convenience name for target.
@@ -109,14 +111,14 @@ CMakeFiles/Ipc.dir/clean:
 CMakeFiles/Server.dir/all: CMakeFiles/Ipc.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sonatus/build/CMakeFiles --progress-num=3,4 "Built target Server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles --progress-num=5,6 "Built target Server"
 .PHONY : CMakeFiles/Server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sonatus/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Server.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sonatus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 0
 .PHONY : CMakeFiles/Server.dir/rule
 
 # Convenience name for target.
@@ -127,6 +129,32 @@ Server: CMakeFiles/Server.dir/rule
 CMakeFiles/Server.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/clean
 .PHONY : CMakeFiles/Server.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Client.dir
+
+# All Build rule for target.
+CMakeFiles/Client.dir/all: CMakeFiles/Ipc.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles --progress-num=1,2 "Built target Client"
+.PHONY : CMakeFiles/Client.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 4
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 0
+.PHONY : CMakeFiles/Client.dir/rule
+
+# Convenience name for target.
+Client: CMakeFiles/Client.dir/rule
+.PHONY : Client
+
+# clean rule for target.
+CMakeFiles/Client.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/clean
+.PHONY : CMakeFiles/Client.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

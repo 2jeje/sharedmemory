@@ -4,7 +4,7 @@
 # compile CXX with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
 CXX_DEFINES = -DIpc_EXPORTS
 
-CXX_INCLUDES = -I/Users/kakao/codingtest/sonatus/./libIpc/inc
+CXX_INCLUDES = -I/Users/kakao/codingtest/sharedmemory/sonatus/./libIpc/inc
 
 CXX_FLAGS =  -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk -fPIC
 

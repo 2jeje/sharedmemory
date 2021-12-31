@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/kakao/codingtest/sonatus/server/src/main.cpp" "CMakeFiles/Server.dir/server/src/main.o" "gcc" "CMakeFiles/Server.dir/server/src/main.o.d"
+  "/Users/kakao/codingtest/sharedmemory/sonatus/server/src/main.cpp" "CMakeFiles/Server.dir/server/src/main.o" "gcc" "CMakeFiles/Server.dir/server/src/main.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/kakao/codingtest/sonatus/build/CMakeFiles/Ipc.dir/DependInfo.cmake"
+  "/Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles/Ipc.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

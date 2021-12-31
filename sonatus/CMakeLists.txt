@@ -33,3 +33,23 @@ add_executable(Server ${SERVER_SOURCES})
 target_include_directories(Server PRIVATE "./libIpc/inc")
 
 target_link_libraries(Server Ipc)
+
+
+#
+# Client
+#
+
+# set(SERVER_HEADERS
+#     "./include/"
+# )
+
+set(CLIENT_SOURCES
+    "./client/src/main.cpp"
+)
+
+# add_executable(Server ${MAIN_HEADERS} ${MAIN_SOURCES})
+add_executable(Client ${CLIENT_SOURCES})
+
+target_include_directories(Client PRIVATE "./libIpc/inc")
+
+target_link_libraries(Client Ipc)

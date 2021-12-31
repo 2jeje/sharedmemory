@@ -57,10 +57,10 @@ RM = /usr/local/Cellar/cmake/3.22.1/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/kakao/codingtest/sonatus
+CMAKE_SOURCE_DIR = /Users/kakao/codingtest/sharedmemory/sonatus
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/kakao/codingtest/sonatus/build
+CMAKE_BINARY_DIR = /Users/kakao/codingtest/sharedmemory/sonatus/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sonatus/build/CMakeFiles /Users/kakao/codingtest/sonatus/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles /Users/kakao/codingtest/sharedmemory/sonatus/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sonatus/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/kakao/codingtest/sharedmemory/sonatus/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -142,6 +142,34 @@ Server/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Server.dir/build.make CMakeFiles/Server.dir/build
 .PHONY : Server/fast
 
+#=============================================================================
+# Target rules for targets named Client
+
+# Build rule for target.
+Client: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Client
+.PHONY : Client
+
+# fast build rule for target.
+Client/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/build
+.PHONY : Client/fast
+
+# target to build an object file
+client/src/main.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/src/main.o
+.PHONY : client/src/main.o
+
+# target to preprocess a source file
+client/src/main.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/src/main.i
+.PHONY : client/src/main.i
+
+# target to generate assembly for a file
+client/src/main.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Client.dir/build.make CMakeFiles/Client.dir/client/src/main.s
+.PHONY : client/src/main.s
+
 # target to build an object file
 libIpc/src/IpcController.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Ipc.dir/build.make CMakeFiles/Ipc.dir/libIpc/src/IpcController.o
@@ -180,8 +208,12 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... Client"
 	@echo "... Ipc"
 	@echo "... Server"
+	@echo "... client/src/main.o"
+	@echo "... client/src/main.i"
+	@echo "... client/src/main.s"
 	@echo "... libIpc/src/IpcController.o"
 	@echo "... libIpc/src/IpcController.i"
 	@echo "... libIpc/src/IpcController.s"

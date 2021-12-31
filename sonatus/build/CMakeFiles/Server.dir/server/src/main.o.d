@@ -1,5 +1,5 @@
 CMakeFiles/Server.dir/server/src/main.o: \
-  /Users/kakao/codingtest/sonatus/server/src/main.cpp \
+  /Users/kakao/codingtest/sharedmemory/sonatus/server/src/main.cpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/iostream \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/pthread.h \
@@ -224,4 +224,4 @@ CMakeFiles/Server.dir/server/src/main.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/bitset \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bit_reference \
-  /Users/kakao/codingtest/sonatus/./libIpc/inc/IpcController.h
+  /Users/kakao/codingtest/sharedmemory/sonatus/./libIpc/inc/IpcController.h
