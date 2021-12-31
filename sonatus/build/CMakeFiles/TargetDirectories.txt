@@ -1,0 +1,5 @@
+/home/jaehoon/sharedmemory/sonatus/build/CMakeFiles/edit_cache.dir
+/home/jaehoon/sharedmemory/sonatus/build/CMakeFiles/Ipc.dir
+/home/jaehoon/sharedmemory/sonatus/build/CMakeFiles/Client.dir
+/home/jaehoon/sharedmemory/sonatus/build/CMakeFiles/Server.dir
+/home/jaehoon/sharedmemory/sonatus/build/CMakeFiles/rebuild_cache.dir
