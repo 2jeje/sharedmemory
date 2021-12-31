@@ -13,7 +13,7 @@ public:
     bool serializeIpcRequest(string str, char* output);
     bool deSerializeIpcRequest(char* input, IpcRequest* request);
 
-    bool serializeIpcResponse(IpcResponse* response, char* output);
+    bool serializeIpcResponse(IpcResponse response, char* output);
     bool deSerializeIpcResponse(char* input, IpcResponse* response);
 
 private:

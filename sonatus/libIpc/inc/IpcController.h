@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <semaphore.h>
 
 #define  MEM_SIZE  4096
 using namespace std;
@@ -12,6 +13,7 @@ struct IpcLock
 {
     pthread_mutex_t mutex;
     pthread_mutexattr_t mutexAttr;
+    pthread_cond_t cond;
     char buffer[MEM_SIZE];
 };
 
@@ -33,12 +35,17 @@ public:
     bool create();
     bool write(char* data, int size);
     bool read(char* data, int size);
+    void lock();
+    void unlock();
+    void wait();
+    void signal();
     bool free();
 private:
     int key;
     int shmid;
     //void* shmAddr;
     IpcLock* lockptr;
+    sem_t sema;
 };
 
 #endif

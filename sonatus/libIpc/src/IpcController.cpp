@@ -21,20 +21,25 @@ bool IpcController::create() {
 
    // memset(lockptr->buffer, 0, MEM_SIZE);
 
-    if (pthread_mutexattr_init( &lockptr->mutexAttr ) != 0 ) {
-        cout<<key<< " pthread_mutexattr_initfailed "<< std::strerror(errno) <<endl;
-        return false;
-    }
+    // if (pthread_mutexattr_init( &lockptr->mutexAttr ) != 0 ) {
+    //     cout<<key<< " pthread_mutexattr_initfailed "<< std::strerror(errno) <<endl;
+    //     return false;
+    // }
 
-    if( pthread_mutexattr_setpshared( &lockptr->mutexAttr,PTHREAD_PROCESS_SHARED) != 0 ) {
-        cout<<key<< " pthread_mutexattr_setpshared "<< std::strerror(errno) <<endl;
-        return false;
-    }
+    // if (pthread_mutexattr_setpshared( &lockptr->mutexAttr,PTHREAD_PROCESS_SHARED) != 0 ) {
+    //     cout<<key<< " pthread_mutexattr_setpshared "<< std::strerror(errno) <<endl;
+    //     return false;
+    // }
 
-    if( pthread_mutex_init( &lockptr->mutex, &lockptr->mutexAttr) != 0 ) {
-        cout<<key<< " pthread_mutex_init "<< std::strerror(errno) <<endl;
-        return false;
-    }
+    // if (pthread_mutex_init( &lockptr->mutex, &lockptr->mutexAttr) != 0 ) {
+    //     cout<<key<< " pthread_mutex_init "<< std::strerror(errno) <<endl;
+    //     return false;
+    // }
+
+    if (sem_init(&sema, key, 1) < 0) {
+        cout<<key<< " sem_init "<< std::strerror(errno) <<endl;
+		return false;
+	}
 
     cout<<"create() shmget success"<<endl;
     return true;
@@ -47,21 +52,39 @@ bool IpcController::write(char* data, int size) {
         return false;
     }
 
-    if (pthread_mutex_lock( &lockptr->mutex ) == 0 ) {
+  //  if (pthread_mutex_lock( &lockptr->mutex ) == 0 ) {
         memcpy((char *)lockptr->buffer, data, size);
-    }
+   // }
 
-    pthread_mutex_unlock( &lockptr->mutex ) ;
+  //  pthread_mutex_unlock( &lockptr->mutex ) ;
     return true;
 }
 
 bool IpcController::read(char* data, int size) {
-    if (pthread_mutex_lock( &lockptr->mutex ) == 0 ) {
+  //  if (pthread_mutex_lock( &lockptr->mutex ) == 0 ) {
         memcpy(data, (char *)lockptr->buffer, size);
-    }
-    pthread_mutex_unlock( &lockptr->mutex );
+  //  }
+   // pthread_mutex_unlock( &lockptr->mutex );
    // printf( "Data read from shared data :   %s\n", (char *)data);
     return true;
+}
+
+void IpcController::lock() {
+   // pthread_mutex_lock( &lockptr->mutex );
+}
+
+void IpcController::unlock() {
+  //  pthread_mutex_unlock( &lockptr->mutex );
+}
+
+void IpcController::wait() {
+   // pthread_cond_wait( &lockptr->cond, &lockptr->mutex);
+   sem_wait(&sema);
+}
+
+void IpcController::signal() {
+   // pthread_cond_signal( &lockptr->cond);
+   sem_post(&sema);
 }
 
 bool IpcController::free() {

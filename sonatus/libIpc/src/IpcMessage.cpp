@@ -31,7 +31,7 @@ bool IpcMessage::deSerializeIpcRequest(char* input, IpcRequest* request) {
 }
 
 
-bool IpcMessage::serializeIpcResponse(IpcResponse* response, char* output) {
+bool IpcMessage::serializeIpcResponse(IpcResponse response, char* output) {
     memcpy(output, &response, sizeof(IpcResponse));
     return true;
 }

@@ -22,6 +22,10 @@ int main() {
         char buff [MEM_SIZE] = {0,};
         int processingRequestId = -1;
 
+        // ipc.lock();
+        // ipc.wait();
+        // ipc.unlock();
+
         ipc.read(buff, sizeof(IpcRequest));
         if (buff[0] != 0) {
 
@@ -54,9 +58,14 @@ int main() {
 
                 memset(buff, 0, MEM_SIZE);
                 // ipc.write(buff, 2000);
+                
+                message.serializeIpcResponse(response, buff);
+                ipc.write(buff, sizeof(IpcResponse));
+                ipc.signal();
+                // IpcResponse responserr;
+                // message.deSerializeIpcResponse(buff, &responserr);
+                // cout << "Test Send response :" << responserr.status << " " << responserr.requestId<< " " << responserr.result <<endl;
 
-                message.serializeIpcResponse(&response, buff);
-                ipc.write(buff, MEM_SIZE);
             }
         }
 

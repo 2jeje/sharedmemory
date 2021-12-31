@@ -42,17 +42,20 @@ int main() {
         }
         else {
             ipc.write(buff, sizeof(IpcRequest));
-            this_thread::sleep_for(chrono::milliseconds(500));
+            
+            ipc.wait();
 
             memset(buff, 0, MEM_SIZE);
             ipc.read(buff, sizeof(IpcResponse));
+
             if (buff[0] != 0) {
                 IpcResponse response;
                 if (message.deSerializeIpcResponse(buff, &response) == true) {
-                    cout << "Receive response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
+                    cout << "Receive response :" << buff << " " << response.status << " " << response.requestId<< " " << response.result <<endl;
                    // break;
                 }
             }
+            ipc.unlock();
 
         }
     }
