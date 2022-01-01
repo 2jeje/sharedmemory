@@ -20,7 +20,8 @@ int main() {
 
     while(1) {
         char buff [MEM_SIZE] = {0,};
-
+        
+        // wait incoming request
 	ipc.wait();
 
         ipc.read(buff, sizeof(IpcRequest));
@@ -29,6 +30,7 @@ int main() {
 
             IpcMessage message;
             IpcRequest request;
+            // deserialize data
             if (message.deSerializeIpcRequest(buff, &request) == true) {
                 cout << "Receive request :" << request.requestId << " " << request.op<< " " << request.lparam <<  " " << request.rparam<<endl;
                 double result = 0;
@@ -62,7 +64,7 @@ int main() {
                 cout << "Send response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
 
                 memset(buff, 0, MEM_SIZE);
-                
+                // serialize data to response 
                 message.serializeIpcResponse(response, buff);
                 ipc.write(buff, sizeof(IpcResponse));
                 ipc.signal();

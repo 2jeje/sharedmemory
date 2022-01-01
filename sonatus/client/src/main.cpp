@@ -15,6 +15,7 @@ int main() {
     string key;
     int nKey = -1;
 
+    // enter key to create shared memry
     cout<< "Please enter key value of Server> ";
     getline(cin, key);
 
@@ -26,6 +27,7 @@ int main() {
         return 0;
     }
     
+    // create shared memory
     IpcController ipc(nKey);
     if (ipc.create() == false) {
         cout << "ipc creation failed"<<endl;
@@ -39,14 +41,17 @@ int main() {
 
         getline(cin, command);
         IpcMessage message;
+        // serialize command
         if (message.serializeIpcRequest(command, buff) == false) {
             cout<<"commnad is invalid"<<endl;
         }
         else {
             ipc.write(buff, sizeof(IpcRequest));
+            // notify to server
 	    ipc.signal();
             this_thread::sleep_for(chrono::milliseconds(1000));
-
+            
+            // wait respose
             ipc.wait();
 
             memset(buff, 0, MEM_SIZE);
@@ -56,7 +61,7 @@ int main() {
                 IpcResponse response;
                 if (message.deSerializeIpcResponse(buff, &response) == true) {
                     cout << "Receive response :" << buff << " " << response.status << " " << response.requestId<< " " << response.result <<endl;
-                   // break;
+                   
                 }
             }
 
