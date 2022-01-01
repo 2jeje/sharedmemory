@@ -31,7 +31,7 @@ int main() {
         IpcRequest request;
         // deserialize data
         if (message.deSerializeIpcRequest(buff, &request) == true) {
-            cout << "Receive request :" << request.requestId << " " << request.op<< " " << request.lparam <<  " " << request.rparam<<endl;
+            cout << "Receive request>" << " requestId: " << request.requestId << " op: " << request.op<< " lparam: " << request.lparam <<  " rparam: " << request.rparam<<endl;
             double result = 0;
             int status = 200;
             switch (request.op) {
@@ -60,8 +60,8 @@ int main() {
 
             IpcResponse response = {status, request.requestId, result};
             cout.precision(3);
-            cout << "Send response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
-
+            cout << "Send response>" << "status: " << response.status << " requestId: " << response.requestId<< " result: " << response.result <<endl;
+ 
             memset(buff, 0, MEM_SIZE);
             // serialize data to response 
             message.serializeIpcResponse(response, buff);

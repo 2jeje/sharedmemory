@@ -59,7 +59,7 @@ int main() {
 
             IpcResponse response;
             if (message.deSerializeIpcResponse(buff, &response) == true) {
-                cout << "Receive response :" << buff << " " << response.status << " " << response.requestId<< " " << response.result <<endl;
+                cout << "Receive response :" << " " << response.status << " " << response.requestId<< " " << response.result <<endl;
                    
             }
         }
