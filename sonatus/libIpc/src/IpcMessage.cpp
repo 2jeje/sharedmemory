@@ -6,7 +6,7 @@
 #include "IpcMessage.h"
 
 bool IpcMessage::serializeIpcRequest(string str, char* output) {
-
+    // check command 
     regex reg("([0-9]+)[ \t]*([+-/*])[ \t]*([0-9]+)");
 
     smatch match;
