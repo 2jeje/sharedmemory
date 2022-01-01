@@ -20,7 +20,6 @@ int main() {
 
     while(1) {
         char buff [MEM_SIZE] = {0,};
-        int processingRequestId = -1;
 
 	ipc.wait();
 
@@ -45,7 +44,13 @@ int main() {
                         result = request.lparam * request.rparam;
                         break;
                     case '/':
-                        result = request.lparam / request.rparam;
+	                if (request.rparam == 0) {
+                            status = 400;
+                        }
+                        else {
+                            result = request.lparam / (double)request.rparam;
+                        } 
+                        
                         break;
                     default:
                         status = 400;
@@ -53,6 +58,7 @@ int main() {
                 }
 
                 IpcResponse response = {status, request.requestId, result};
+                cout.precision(3);
                 cout << "Send response :" << response.status << " " << response.requestId<< " " << response.result <<endl;
 
                 memset(buff, 0, MEM_SIZE);
