@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11 -pthread -lrt   CMakeFiles/Client.dir/client/src/main.cpp.o  -o Client libIpc.so -Wl,-rpath,/home/jaehoon/sharedmemory/sonatus/build 

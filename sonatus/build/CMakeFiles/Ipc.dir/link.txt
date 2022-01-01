@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC -std=c++11 -pthread -lrt  -shared -Wl,-soname,libIpc.so -o libIpc.so CMakeFiles/Ipc.dir/libIpc/src/IpcController.cpp.o CMakeFiles/Ipc.dir/libIpc/src/IpcMessage.cpp.o 

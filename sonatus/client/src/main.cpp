@@ -57,14 +57,11 @@ int main() {
             memset(buff, 0, MEM_SIZE);
             ipc.read(buff, sizeof(IpcResponse));
 
-            if (buff[0] != 0) {
-                IpcResponse response;
-                if (message.deSerializeIpcResponse(buff, &response) == true) {
-                    cout << "Receive response :" << buff << " " << response.status << " " << response.requestId<< " " << response.result <<endl;
+            IpcResponse response;
+            if (message.deSerializeIpcResponse(buff, &response) == true) {
+                cout << "Receive response :" << buff << " " << response.status << " " << response.requestId<< " " << response.result <<endl;
                    
-                }
             }
-
         }
     }
     ipc.free(); 
